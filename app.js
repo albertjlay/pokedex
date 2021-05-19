@@ -87,6 +87,8 @@ function fetchPokeData(id) {
 // Displays pokemon with ID of start (inclusive) to end (not inclusive).
 // Num Num -> Void
 async function loadPokedex(start, end) {
+  // Resets main
+  main.innerHTML = '';
   const pokemonNo = 898;
   if (start <= 0 || end > pokemonNo) {
     alert(`Please input a valid range (from 1 to ${898})`);
