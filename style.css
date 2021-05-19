@@ -20,17 +20,38 @@
   --water: rgb(46, 133, 220);
 }
 body {
-  margin: 1vh 1vw;
-  width: 98vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
 }
 
+nav {
+  border-right: solid rgb(170, 163, 163) 2px;
+  width: 20vw;
+}
+nav .region {
+  margin: 1em auto;
+  height: 4em;
+  font-family: 'Press Start 2P', cursive;
+  display: block;
+  background-color: inherit;
+  border: none;
+  font-size: 1em;
+  transform: 500;
+}
+nav .region:hover {
+  cursor: pointer;
+  color: blue;
+}
 h1 {
   font-family: 'Press Start 2P', cursive;
   width: 100%;
   text-align: center;
+  font-size: 1.7em;
+  margin-bottom: 2em;
 }
 main {
-  width: 100vw;
+  width: 96vw;
 }
 
 .entry {
