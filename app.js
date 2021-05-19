@@ -24,10 +24,17 @@ function getTypeColor(type) {
   return typeColorPairs[key];
 }
 
+function addType(parent, type) {
+  const typeEntry = document.createElement('span');
+  typeEntry.innerText = type.toUpperCase();
+  typeEntry.style.backgroundColor = getTypeColor(type);
+  parent.appendChild(typeEntry);
+}
+
 const main = document.querySelector('main');
 function makeEntry(pokeData) {
   const entry = document.createElement('div');
-  entry.classList.toggle('entry');
+  entry.classList.add('entry');
   entry.id = pokeData.id;
   entry.innerHTML = `
     <div class="poke-id-container">
@@ -37,13 +44,15 @@ function makeEntry(pokeData) {
     src="https://pokeres.bastionbot.org/images/pokemon/${pokeData.id}.png"
     alt="Bulbasaur"
   />
-  <div class="name">${pokeData.name}</div>
-  <div class="type">
-    <span>${pokeData.types[0].type.name.toUpperCase()}</span>
-    <span>POISON</span>
-  </div>`;
+  <div class="name">${pokeData.name}</div>`;
   main.appendChild(entry);
-  console.log(getTypeColor('fire'));
+
+  const typeContainer = document.createElement('div');
+  typeContainer.classList.add('type');
+  for (let i = 0; i < pokeData.types.length; i++) {
+    addType(typeContainer, pokeData.types[i].type.name);
+  }
+  entry.appendChild(typeContainer);
 }
 
 function fetchPokeData(id) {

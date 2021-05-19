@@ -89,4 +89,5 @@ main {
   border: solid black 1px;
   font-size: 100%;
   display: inline-block;
+  margin: 0 0.4em;
 }
