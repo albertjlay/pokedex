@@ -20,9 +20,11 @@
   --water: rgb(46, 133, 220);
 }
 body {
+  margin: 1em;
+}
+.main-content {
   display: flex;
   justify-content: space-between;
-  margin: 1em;
 }
 
 nav {
@@ -111,4 +113,11 @@ main {
   font-size: 100%;
   display: inline-block;
   margin: 0 0.4em;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  height: 2em;
+  align-content: center;
 }
