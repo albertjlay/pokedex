@@ -27,7 +27,16 @@ function getTypeColor(type) {
 
 // returns a string that represents the pokemon ID, with leading zeroes as required.
 // Num -> Str
-function getPokeID(id) {}
+function getPokeID(id) {
+  const strID = id.toString();
+  return '00' + strID;
+}
+
+// capitalizes first character of the string
+function capitalizeFirst(str) {
+  const [first, ...rest] = str;
+  return first.toUpperCase() + rest.join('');
+}
 
 // Appends a span with inner text = "type" to parent (normally div of class "type")
 // HTMLElement Str -> VOID
@@ -47,13 +56,13 @@ function makeEntry(pokeData) {
   entry.id = pokeData.id;
   entry.innerHTML = `
     <div class="poke-id-container">
-      <div class="poke-id">${pokeData.id}</div>
+      <div class="poke-id">${getPokeID(pokeData.id)}</div>
     </div>
   <img
     src="https://pokeres.bastionbot.org/images/pokemon/${pokeData.id}.png"
     alt="Bulbasaur"
   />
-  <div class="name">${pokeData.name}</div>`;
+  <div class="name">${capitalizeFirst(pokeData.name)}</div>`;
   main.appendChild(entry);
 
   const typeContainer = document.createElement('div');
@@ -77,12 +86,12 @@ function fetchPokeData(id) {
 
 // Displays pokemon with ID of start (inclusive) to end (not inclusive).
 // Num Num -> Void
-function loadPokedex(start, end) {
+async function loadPokedex(start, end) {
   const pokemonNo = 898;
   if (start <= 0 || end > pokemonNo) {
     alert(`Please input a valid range (from 1 to ${898})`);
   }
   for (let i = start; i <= end; i++) {
-    fetchPokeData(i);
+    await fetchPokeData(i);
   }
 }
