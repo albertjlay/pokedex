@@ -40,6 +40,8 @@ main {
   border-radius: 20px;
   font-family: 'Ubuntu', sans-serif;
   border: solid black 1px;
+  display: inline-block;
+  margin: 1em;
 }
 .entry .poke-id-container {
   width: 50px;
@@ -71,19 +73,20 @@ main {
   margin-top: 1em;
 }
 .entry .type {
+  width: 90%;
   font-size: 80%;
   font-family: 'Orbitron', sans-serif;
   color: white;
-  width: 80%;
   height: 3em;
-  margin: 1.5em 10% 0 10%;
+  margin: 1.5em 5% 0 5%;
+  text-align: center;
 }
 .entry .type span {
-  width: 30%;
+  width: 6em;
   border-radius: 50px;
   background-color: var(--poison);
   padding: 0.4em 0.8em;
   border: solid black 1px;
-  margin: 0 5%;
   font-size: 100%;
+  display: inline-block;
 }
