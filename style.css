@@ -1,9 +1,83 @@
 :root {
-	display: flex;
-	justify-content: center;
-	background: rgb(255, 248, 230);
+  background: rgb(255, 248, 230);
+  --bug: rgb(176, 191, 48);
+  --dark: rgb(54, 42, 30);
+  --dragon: rgb(104, 87, 191);
+  --electric: rgb(245, 196, 245);
+  --fairy: rgb(253, 182, 21);
+  --fighting: rgb(131, 57, 36);
+  --fire: rgb(237, 64, 14);
+  --flying: rgb(141, 159, 235);
+  --ghost: rgb(98, 95, 179);
+  --grass: rgb(103, 188, 43);
+  --ground: rgb(208, 174, 84);
+  --ice: rgb(164, 230, 251);
+  --normal: rgb(193, 189, 175);
+  --poison: rgb(145, 68, 148);
+  --psychic: rgb(221, 70, 123);
+  --rock: rgb(161, 140, 79);
+  --steel: rgb(172, 173, 185);
+  --water: rgb(46, 133, 220);
 }
 
 h1 {
-	font-family: "Press Start 2P", cursive;
+  font-family: 'Press Start 2P', cursive;
+}
+main {
+  width: 100vw;
+}
+
+.entry {
+  height: 20em;
+  width: 250px;
+  background-color: white;
+  border-radius: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  border: solid black 1px;
+}
+.entry .poke-id-container {
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+  background-color: var(--grass);
+  border-radius: 50%;
+  position: relative;
+  margin-left: 85%;
+  transform: translateY(-5px);
+  display: flex;
+}
+.entry .poke-id-container .poke-id {
+  font-weight: 700;
+  font-size: 70%;
+  font-family: 'Press Start 2P', cursive;
+  margin: auto;
+}
+.entry img {
+  width: 60%;
+  margin: 0 20%;
+}
+
+.entry .name {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.4em;
+  margin-top: 1em;
+}
+.entry .type {
+  font-size: 80%;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  width: 80%;
+  height: 3em;
+  margin: 1.5em 10% 0 10%;
+}
+.entry .type span {
+  width: 30%;
+  border-radius: 50px;
+  background-color: var(--poison);
+  padding: 0.4em 0.8em;
+  border: solid black 1px;
+  margin: 0 5%;
+  font-size: 100%;
 }
