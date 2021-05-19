@@ -32,7 +32,8 @@ function getPokeID(id) {
   const strID = id.toString();
   if (id < 10) {
     return `00${strID}`;
-  } else if (id < 100) {
+  }
+  if (id < 100) {
     return `0${strID}`;
   }
   return strID;
@@ -80,8 +81,8 @@ function makeEntry(pokeData) {
 }
 // connects to pokeapi and makes a new entry for the Pokemon with the corresponding ID.
 // Num -> Void
-function fetchPokeData(id) {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+async function fetchPokeData(id) {
+  await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     .then((res) => res.json())
     .then((res) => {
       makeEntry(res);
@@ -98,7 +99,7 @@ async function loadPokedex(start, end) {
     alert(`Please input a valid range (from 1 to ${898})`);
   }
   for (let i = start; i <= end; i += 1) {
-    fetchPokeData(i);
+    await fetchPokeData(i);
   }
 }
 
@@ -125,3 +126,5 @@ const regions = document.querySelectorAll('nav button');
 for (let i = 0; i < regions.length; i += 1) {
   regions[i].addEventListener('click', loadRegionPokemon);
 }
+
+loadPokedex(1, 5);
