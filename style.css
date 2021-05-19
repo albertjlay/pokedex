@@ -1,0 +1,9 @@
+:root {
+	display: flex;
+	justify-content: center;
+	background: rgb(255, 248, 230);
+}
+
+h1 {
+	font-family: "Press Start 2P", cursive;
+}
