@@ -19,9 +19,15 @@
   --steel: rgb(172, 173, 185);
   --water: rgb(46, 133, 220);
 }
+body {
+  margin: 1vh 1vw;
+  width: 98vw;
+}
 
 h1 {
   font-family: 'Press Start 2P', cursive;
+  width: 100%;
+  text-align: center;
 }
 main {
   width: 100vw;
