@@ -36,7 +36,7 @@ function getTypeColor(type) {
 // Num -> Str
 function getRegionbyID(id) {
   const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
-  cconst regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
+  const regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (id < regionLimits[i + 1]) {
       return regionOrder[i];
@@ -171,8 +171,7 @@ function addBackEntry(entry, pokeData) {
         src=${pokeData.sprites.front_default}
         alt=${capitalizeFirst(pokeData.name)}
     /></span>
-  </div>
-  `;
+  </div>`;
   entry.appendChild(back);
   addAllStats(back, pokeData);
 }
