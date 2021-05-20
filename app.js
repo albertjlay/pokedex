@@ -36,7 +36,7 @@ function getTypeColor(type) {
 // Num -> Str
 function getRegionbyID(id) {
   const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
-  const regionLimits = [1, 152, 258, 393, 501, 656, 722];
+  cconst regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (id < regionLimits[i + 1]) {
       return regionOrder[i];
@@ -214,10 +214,10 @@ async function loadPokedex(start, end) {
 // ----------------------------------- Navigation --------------------------------
 function loadRegionPokemon() {
   const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
-  const regionLimits = [1, 152, 258, 393, 501, 656, 722];
+  const regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (this.innerText === regionOrder[i]) {
-      loadPokedex(regionLimits[i], regionLimits[i + 1]);
+      loadPokedex(regionLimits[i], regionLimits[i + 1] - 1);
     }
   }
 }
