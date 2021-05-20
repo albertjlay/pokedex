@@ -59,26 +59,30 @@ main {
 .entry {
   height: 20em;
   width: 250px;
-  background-color: white;
   border-radius: 20px;
   margin: 1em;
   border: solid black 1px;
   display: inline-block;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+.entry:hover {
+  transform: rotateY(180deg);
+  cursor: pointer;
 }
 
 .front {
-  height: 92.3%;
+  background-color: white;
+  height: 93.6%;
   border-radius: inherit;
   font-family: 'Ubuntu', sans-serif;
   position: relative;
+  padding-top: 8%;
+  backface-visibility: hidden;
 }
-.entry .poke-id-container {
-  margin: 8% 0;
-}
-.entry .poke-id-container .poke-id {
+.front .poke-id-container .poke-id {
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  position: relative;
 }
 .front img {
   width: 60%;
@@ -110,7 +114,18 @@ main {
   display: inline-block;
   margin: 0 0.4em;
 }
-*/ footer {
+
+.back {
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  bottom: 105%;
+  background-color: white;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+footer {
   display: flex;
   justify-content: center;
   height: 2em;
