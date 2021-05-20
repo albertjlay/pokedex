@@ -61,42 +61,38 @@ main {
   width: 250px;
   background-color: white;
   border-radius: 20px;
-  font-family: 'Ubuntu', sans-serif;
+  margin: 1em;
   border: solid black 1px;
   display: inline-block;
-  margin: 1em;
+}
+
+.front {
+  height: 92.3%;
+  border-radius: inherit;
+  font-family: 'Ubuntu', sans-serif;
+  position: relative;
 }
 .entry .poke-id-container {
-  width: 50px;
-  height: 50px;
-  z-index: 3;
-  background-color: white;
-  border: solid black 1px;
-  border-radius: 50%;
-  position: relative;
-  margin-left: 85%;
-  transform: translateY(-5px);
-  display: flex;
+  margin: 8% 0;
 }
 .entry .poke-id-container .poke-id {
-  font-weight: 700;
-  font-size: 70%;
+  text-align: center;
   font-family: 'Press Start 2P', cursive;
-  margin: auto;
+  position: relative;
 }
-.entry img {
+.front img {
   width: 60%;
   margin: 0 20%;
 }
 
-.entry .name {
+.front .name {
   width: 100%;
   text-align: center;
   font-weight: 700;
   font-size: 1.4em;
   margin-top: 1em;
 }
-.entry .type {
+.front .type {
   width: 90%;
   font-size: 80%;
   font-family: 'Orbitron', sans-serif;
@@ -105,7 +101,7 @@ main {
   margin: 1.5em 5% 0 5%;
   text-align: center;
 }
-.entry .type span {
+.front .type span {
   width: 6em;
   border-radius: 50px;
   padding: 0.4em 0.8em;
@@ -114,8 +110,7 @@ main {
   display: inline-block;
   margin: 0 0.4em;
 }
-
-footer {
+*/ footer {
   display: flex;
   justify-content: center;
   height: 2em;
