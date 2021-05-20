@@ -1,4 +1,10 @@
 // ----------------------------------- Utilities --------------------------------
+// returns type of Pokemon
+// PokeObject Num -> Str
+function getPokeType(pokeData, slot) {
+  return pokeData.types[slot - 1].type.name;
+}
+
 // returns a string corresponding to the color of the type
 // Str -> Str
 function getTypeColor(type) {
@@ -26,6 +32,18 @@ function getTypeColor(type) {
   return typeColorPairs[key];
 }
 
+// returns region corresponding to the pokemon ID (where it first appeared in)
+// Num -> Str
+function getRegionbyID(id) {
+  const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
+  const regionLimits = [1, 152, 258, 393, 501, 656, 722];
+  for (let i = 0; i < regionOrder.length; i += 1) {
+    if (id < regionLimits[i + 1]) {
+      return regionOrder[i];
+    }
+  }
+}
+
 // returns a string that represents the pokemon ID, with leading zeroes as required.
 // Num -> Str
 function getPokeID(id) {
@@ -45,7 +63,7 @@ function capitalizeFirst(str) {
   return first.toUpperCase() + rest.join('');
 }
 
-// ----------------------------------- Add entries --------------------------------
+// --------------------------------- Add entry utilities --------------------------------
 // Appends a span with inner text = "type" to parent (normally div of class "type")
 // HTMLElement Str -> VOID
 function addType(parent, type) {
@@ -54,30 +72,120 @@ function addType(parent, type) {
   typeEntry.style.backgroundColor = getTypeColor(type);
   parent.appendChild(typeEntry);
 }
+
+// Returns requested status from pokeData.
+// Str PokeObject -> Str
+// requires: pokeData is one of: region, ability, type, exp, height, weight
+function getPokeStats(req, pokeData) {
+  if (req === 'region') {
+    return getRegionbyID(pokeData.id).toLowerCase();
+  }
+  if (req === 'ability') {
+    return pokeData.abilities[0].ability.name;
+  }
+  if (req === 'type' && pokeData.types.length === 1) {
+    return pokeData.types[0].type.name;
+  }
+  if (req === 'type' && pokeData.types.length === 2) {
+    return `${getPokeType(pokeData, 1)}, ${getPokeType(pokeData, 2)}`;
+  }
+  if (req === 'exp') {
+    return pokeData.base_experience;
+  }
+  if (req === 'height') {
+    return pokeData.height;
+  }
+  if (req === 'weight') {
+    return pokeData.weight;
+  }
+}
+
+// Appends a status into stats class in back of card.
+// HTMLElement Str anyof(Str, Num) -> Void
+function addStat(parent, title, value) {
+  const statEntry = document.createElement('div');
+  const statTitle = document.createElement('span');
+  statTitle.textContent = title;
+  statTitle.classList.add('stats-title');
+  statEntry.appendChild(statTitle);
+  const statValue = document.createElement('span');
+  statValue.textContent = value;
+  statValue.classList.add('stats-value');
+  statEntry.appendChild(statValue);
+  parent.appendChild(statEntry);
+}
+
+// Appends all six status (region, ability, type, exp, height, weight) into stats class
+//  in back of card.
+// HTMLElement PokeObject -> Void
+function addAllStats(parent, pokeData) {
+  const statsContainer = document.createElement('div');
+  statsContainer.classList.add('stats');
+  const addedStats = ['region', 'ability', 'type', 'exp', 'height', 'weight'];
+  for (let i = 0; i < addedStats.length; i += 1) {
+    const curStats = addedStats[i];
+    addStat(statsContainer, curStats, getPokeStats(curStats, pokeData));
+  }
+  parent.appendChild(statsContainer);
+}
+
+// ----------------------------------- Add entries --------------------------------
 const main = document.querySelector('main');
-// Makes a new entry for corresponding Pokemon and appends it to main.
-// PokeObject -> Void
-function makeEntry(pokeData) {
-  const entry = document.createElement('div');
-  entry.classList.add('entry');
-  entry.id = pokeData.id;
-  entry.innerHTML = `
+
+// add front part of entry
+// HTMLElement PokeObject -> Void
+function addFrontEntry(entry, pokeData) {
+  const front = document.createElement('div');
+  front.classList.add('front');
+  front.innerHTML = `
     <div class="poke-id-container">
       <div class="poke-id">${getPokeID(pokeData.id)}</div>
     </div>
   <img
     src="https://pokeres.bastionbot.org/images/pokemon/${pokeData.id}.png"
-    alt="Bulbasaur"
+    alt=${capitalizeFirst(pokeData.name)}
   />
   <div class="name">${capitalizeFirst(pokeData.name)}</div>`;
-  main.appendChild(entry);
+  entry.appendChild(front);
 
   const typeContainer = document.createElement('div');
   typeContainer.classList.add('type');
   for (let i = 0; i < pokeData.types.length; i += 1) {
-    addType(typeContainer, pokeData.types[i].type.name);
+    addType(typeContainer, getPokeType(pokeData, i + 1));
   }
-  entry.appendChild(typeContainer);
+  front.appendChild(typeContainer);
+}
+
+// add back part of entry
+// HTMLElement PokeObject -> Void
+function addBackEntry(entry, pokeData) {
+  const back = document.createElement('div');
+  back.classList.add('back');
+  back.style.background = `radial-gradient(white, ${getTypeColor(getPokeType(pokeData, 1))})`;
+  back.innerHTML = `
+  <div class="back-id">${getPokeID(pokeData.id)}</div>
+  <div class="back-pokemon">
+    <span class="back-name">${capitalizeFirst(pokeData.name)}</span>
+    <span class="back-sprite"
+      ><img
+        src=${pokeData.sprites.front_default}
+        alt=${capitalizeFirst(pokeData.name)}
+    /></span>
+  </div>
+  `;
+  entry.appendChild(back);
+  addAllStats(back, pokeData);
+}
+
+// Make a new entry for corresponding Pokemon and appends it to main.
+// PokeObject -> Void
+function makeEntry(pokeData) {
+  const entry = document.createElement('div');
+  entry.classList.add('entry');
+  entry.id = pokeData.id;
+  addFrontEntry(entry, pokeData);
+  addBackEntry(entry, pokeData);
+  main.appendChild(entry);
 }
 // connects to pokeapi and makes a new entry for the Pokemon with the corresponding ID.
 // Num -> Void
@@ -105,15 +213,7 @@ async function loadPokedex(start, end) {
 
 // ----------------------------------- Navigation --------------------------------
 function loadRegionPokemon() {
-  const regionOrder = [
-    'Kanto',
-    'Johto',
-    'Hoenn',
-    'Sinnoh',
-    'Unova',
-    'Kalos',
-    'Alola',
-  ];
+  const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
   const regionLimits = [1, 152, 258, 393, 501, 656, 722];
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (this.innerText === regionOrder[i]) {
