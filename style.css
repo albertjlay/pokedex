@@ -32,13 +32,13 @@ nav {
   width: 20vw;
 }
 nav .region {
-  margin: 1em auto;
+  margin: 0.7em auto;
   height: 4em;
   font-family: 'Press Start 2P', cursive;
   display: block;
   background-color: inherit;
   border: none;
-  font-size: 1em;
+  font-size: 1.3em;
   transform: 500;
 }
 nav .region:hover {
@@ -49,11 +49,15 @@ h1 {
   font-family: 'Press Start 2P', cursive;
   width: 100%;
   text-align: center;
-  font-size: 1.7em;
-  margin-bottom: 2em;
+  font-size: 2em;
+  margin: 1.5em 0;
 }
 main {
   width: 96vw;
+  margin-right: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 2em;
 }
 
 .entry {
@@ -62,7 +66,7 @@ main {
   border-radius: 20px;
   margin: 0 1em;
   border: solid black 1px;
-  display: inline-block;
+  /* display: inline-block */
   transform-style: preserve-3d;
   transition: all 0.5s ease;
 }
@@ -166,6 +170,7 @@ main {
 }
 
 footer {
+  font-family: 'Ubuntu', sans-serif;
   display: flex;
   justify-content: center;
   height: 2em;
