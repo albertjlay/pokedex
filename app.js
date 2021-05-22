@@ -221,7 +221,7 @@ function removeActiveRegion() {
 function loadRegionPokemon() {
   const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
   const regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
-
+  removeActiveRegion();
   // Loads entries and shows active regions.
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (this.innerText === regionOrder[i]) {
