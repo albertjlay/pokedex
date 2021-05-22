@@ -55,18 +55,16 @@ h1 {
 main {
   width: 96vw;
   margin-right: 1em;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-row-gap: 2em;
+  padding-top: 5em;
 }
 
 .entry {
   height: 20em;
   width: 250px;
   border-radius: 20px;
-  margin: 0 1em;
+  margin: -5em 1em;
   border: solid black 1px;
-  /* display: inline-block */
+  display: inline-block;
   transform-style: preserve-3d;
   transition: all 0.5s ease;
 }
