@@ -1,4 +1,4 @@
-# Pokedex
+# [Pokedex](https://albertjlay.github.io/pokedex/)
 
 ![Pokedex project header](./project-media/header.png)
 
