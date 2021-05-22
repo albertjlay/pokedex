@@ -25,8 +25,7 @@
 A web-based clone of the Pokedex from the popular Pokemon series based on data from [PokeAPI](https://pokeapi.co/) and images from [Pokeres - Bastion](https://pokeres.bastionbot.org/) :star_struck:. Displays various stats of each Pokemon and styles each card dynamically according to the Pokemon's primary type. A responsive design that allows comfortable viewing, no matter the screen size.
 
 ### :dragon: 809 Pokemon from seven regions
-
-![GIF showing display of Johto Pokemon](./project-media/main.gif)
+<img alt="GIF showing display of Johto Pokemon" src="./project-media/main.gif" width=1000em/>
 
 ### :black_joker: Custom-designed cards with card-flipping animation
 
