@@ -211,17 +211,26 @@ async function loadPokedex(start, end) {
 }
 
 // ----------------------------------- Navigation --------------------------------
+const regions = document.querySelectorAll('nav button');
+function removeActiveRegion() {
+  for (let i = 0; i < regions.length; i += 1) {
+    regions[i].classList.remove('region-active');
+  }
+}
+
 function loadRegionPokemon() {
   const regionOrder = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Unova', 'Kalos', 'Alola'];
   const regionLimits = [1, 152, 252, 387, 495, 650, 722, 810];
+
+  // Loads entries and shows active regions.
   for (let i = 0; i < regionOrder.length; i += 1) {
     if (this.innerText === regionOrder[i]) {
+      this.classList.add('region-active');
       loadPokedex(regionLimits[i], regionLimits[i + 1] - 1);
     }
   }
 }
 
-const regions = document.querySelectorAll('nav button');
 for (let i = 0; i < regions.length; i += 1) {
   regions[i].addEventListener('click', loadRegionPokemon);
 }
