@@ -33,6 +33,7 @@ nav {
   width: 220px;
   position: fixed;
   padding-top: 1em;
+  margin-top: 2em;
 }
 h1 {
   font-family: 'Press Start 2P', cursive;
@@ -62,7 +63,7 @@ main {
   width: 96vw;
   margin-left: 250px;
   margin-right: 1em;
-  padding-top: 10em;
+  padding-top: 7em;
 }
 
 .entry {
