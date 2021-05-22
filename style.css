@@ -39,10 +39,10 @@ h1 {
   width: 100%;
   text-align: center;
   font-size: 1.7em;
-  margin: 1.5em 0;
+  margin: 1em 0;
 }
 nav .region {
-  margin: 0.7em auto;
+  margin: 0 auto;
   height: 4em;
   font-family: 'Press Start 2P', cursive;
   display: block;
