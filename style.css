@@ -28,8 +28,11 @@ body {
 }
 
 nav {
+  padding-right: 1em;
   border-right: solid rgb(170, 163, 163) 2px;
-  width: 20vw;
+  width: 220px;
+  position: fixed;
+  padding-top: 1em;
 }
 nav .region {
   margin: 0.7em auto;
@@ -38,8 +41,7 @@ nav .region {
   display: block;
   background-color: inherit;
   border: none;
-  font-size: 1.3em;
-  transform: 500;
+  font-size: 1.2em;
 }
 nav .region:hover {
   cursor: pointer;
@@ -49,13 +51,14 @@ h1 {
   font-family: 'Press Start 2P', cursive;
   width: 100%;
   text-align: center;
-  font-size: 2em;
+  font-size: 1.7em;
   margin: 1.5em 0;
 }
 main {
   width: 96vw;
+  margin-left: 250px;
   margin-right: 1em;
-  padding-top: 5em;
+  padding-top: 10em;
 }
 
 .entry {
@@ -173,4 +176,41 @@ footer {
   justify-content: center;
   height: 2em;
   align-content: center;
+}
+
+@media (max-width: 802px) {
+  body {
+    margin: 0;
+  }
+  .main-content {
+    flex-direction: column;
+  }
+  nav {
+    width: 100vw;
+    height: 5em;
+    top: 0;
+    margin-bottom: 3em;
+    background-color: rgb(234, 255, 159);
+    z-index: 2;
+  }
+  h1 {
+    display: block;
+    margin: 0;
+    margin-top: 1em;
+  }
+  nav .region-container {
+    display: flex;
+    overflow-x: auto;
+    background-color: inherit;
+    margin-top: 0;
+  }
+  nav .region {
+    margin: auto 1.2em;
+  }
+  main {
+    width: 100%;
+    margin: auto;
+    margin-top: 7em;
+    text-align: center;
+  }
 }
